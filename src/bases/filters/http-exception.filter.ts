@@ -13,11 +13,11 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
-
+    //Quyet dinh xem se gui ve cai gi 
     response.status(status).json({
-      statusCode: status,
-      timestamp: new Date().toISOString(),
       path: request.url,
+      notifi: "Cloudian Notification!!!", 
+      ...(Object(exception.getResponse())) //Message for frontend see the error log. You can comment this to enhance private  
     });
   }
 }

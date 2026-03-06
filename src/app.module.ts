@@ -8,6 +8,7 @@ import { LoggingInterceptor } from './bases/interceptors/logging.interceptos';
 import { TransformInterceptor } from './bases/interceptors/transform.interceptor';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './modules/auth/auth.module';
 //Add  e module here
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    AuthModule
   ],
   controllers: [AppController],
   providers: [

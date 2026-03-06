@@ -1,8 +1,6 @@
-enum TokenBody {
+export enum TokenBody {
   PURPOSE = 'purpose',
-  ID = 'userID',
   EMAIL = 'email',
   ROLES = 'roles',
-  SUB = 'userID',
+  SUB = 'sub',
 }
-console.log(TokenBody) 
