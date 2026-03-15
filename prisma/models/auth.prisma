@@ -1,9 +1,0 @@
-model Token {
-    id Int @id @default(autoincrement()) 
-    userID Int 
-    token String 
-    type TokenType
-    createdAt DateTime @default(now())
-    usedAt DateTime? 
-    expiresAt DateTime 
-}
