@@ -1,0 +1,24 @@
+model Cart {
+    id           Int @id @default(autoincrement())
+    userId       Int
+    restaurantId Int
+
+    user       User       @relation(fields: [userId], references: [id])
+    restaurant Restaurant @relation(fields: [restaurantId], references: [id])
+    cartItems  CartItem[]
+    @@unique([userId, restaurantId])
+}
+
+model CartItem {
+    id        Int       @id @default(autoincrement())
+    cartId    Int
+    foodId    Int
+    quantity  Int
+    deletedAt DateTime?
+
+    cart Cart @relation(fields: [cartId], references: [id])
+    food Food @relation(fields: [foodId], references: [id])
+
+    @@index([cartId])
+    @@index([foodId])
+}

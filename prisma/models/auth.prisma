@@ -1,0 +1,23 @@
+model OTP {
+    id        Int       @id @default(autoincrement())
+    otp       String
+    userId    Int
+    type      OTPType
+    createdAt DateTime  @default(now())
+    usedAt    DateTime?
+    expiresAt DateTime
+}
+
+model AuthToken {
+    id     Int       @id @default(autoincrement())
+    token  String
+    userId Int
+    type   TokenType
+
+    createdAt DateTime  @default(now())
+    usedAt    DateTime?
+    expiresAt DateTime
+
+    @@index([userId])
+    @@index([token])
+}

@@ -1,12 +1,39 @@
-
 enum Role {
-    ADMIN 
-    USER 
-    //Enter more roles if you want 
+    ADMIN
+    BUSINESS
+    CUSTOMER
 }
+
 enum TokenType {
-    RESET_PASSWORD 
-    RESET_EMAIL 
-    ACCESS 
-    REFRESH 
+    ACCESS
+    REFRESH
 }
+
+enum OTPType {
+    RESET_PASSWORD_OTP
+    RESET_EMAIL_OTP
+    VERIFY_OTP
+}
+
+enum OrderStatus {
+    PENDING
+    CONFIRMED
+    PREPARING
+    DELIVERING
+    DELIVERED
+    CANCELLED
+}
+
+enum PaymentMethod {
+    ZALOPAY
+    MOMO
+    BANK
+    CASH
+}
+
+enum PaymentStatus {
+    FAILED
+    SOLVING
+    DONE
+}
+

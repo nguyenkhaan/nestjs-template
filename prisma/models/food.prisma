@@ -1,0 +1,23 @@
+model Food {
+    id          Int       @id @default(autoincrement())
+    code        String    @unique
+    name        String
+    description String    @default("") @db.Text
+    categoryId  Int
+    category    Category  @relation(fields: [categoryId], references: [id])
+    price       Decimal   @default(0)
+    deleteAt    DateTime?
+    menus       Menu[]
+    orderFoods OrderFood[] 
+    cartItems CartItem[] 
+}
+
+model Menu {
+    id           Int        @id @default(autoincrement())
+    foodId       Int
+    food         Food       @relation(fields: [foodId], references: [id])
+    restaurantId Int
+    restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+    quantity     Int        @default(0)
+    deleteAt     DateTime?
+}

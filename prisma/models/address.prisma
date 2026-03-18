@@ -1,0 +1,8 @@
+model Address {
+    id Int @id @default(autoincrement()) 
+    city String 
+    state String 
+    updatedAt DateTime @updatedAt
+    restaurants Restaurant[] 
+    orders Order[] 
+}
