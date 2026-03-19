@@ -32,9 +32,9 @@ export class RegisterData {
     addressId?: number;
 }
 export class LoginData {
-    @IsNotEmpty()
-    @IsEmail({}, { message: 'Must be valid email' })
-    email: string;
+    @IsString()
+    @MinLength(6, { message: 'Password must be at least 6 characters' })
+    password: string;
 
     @Matches(/^0\d{9,10}$/, {
         message:

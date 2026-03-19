@@ -9,7 +9,6 @@ export class TwilioService {
     constructor(private readonly configService: ConfigService) {
         const accountSid = configService.get<string>('TWILIO_ACCOUNT_SID');
         const authToken = configService.get<string>('TWILIO_AUTH_TOKEN');
-        console.log(accountSid, authToken);
         this.twilioClient = new Twilio(accountSid, authToken);
     }
     async sendOtp(phone: string) {
