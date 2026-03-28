@@ -27,6 +27,8 @@ import {
 } from '@/bases/commons/constants/jwt.constant';
 import { TwilioService } from '../twilio/twilio.service';
 import { generatePassword } from '@/utilis/rnadomPassword';
+import { EmailService } from '../email/email.service';
+import { APP_NAME } from '@/bases/commons/constants/app.constant';
 
 @Injectable()
 export class AuthService {
@@ -36,6 +38,7 @@ export class AuthService {
         private readonly jwtService: JwtService,
         private readonly configService: ConfigService,
         private readonly twilioService: TwilioService,
+        private readonly emailService : EmailService
         // private readonly twilioService: TwilioService,
     ) {}
     async validateUser(phone: string, password: string) {
@@ -319,6 +322,9 @@ export class AuthService {
                     id : user.id 
                 }
             })
+            //send email 
+            await this.emailService.forgotPasswordEmail(`[${APP_NAME}] RESET YOUR PASSWORD` , user.email , defaultPassword) 
+            console.log("Email has been sent successfully") 
             return {
                 defaultPassword 
             }
